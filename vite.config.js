@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 var __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
+    base: '/Ausstech-Website-V2/',
     plugins: [react()],
     resolve: {
         alias: { '@': path.resolve(__dirname, './src') },
