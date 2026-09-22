@@ -1,0 +1,20 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { siteConfig } from '@/config/site';
+const SERVICE_LINKS = [
+    { href: '#services', label: 'Cybersecurity' },
+    { href: '#services', label: 'IT Consulting' },
+    { href: '#services', label: 'ERP & Application Support' },
+    { href: '#services', label: 'NBN Services' },
+    { href: '#services', label: 'Website Development' },
+    { href: '#services', label: 'Business Support' },
+];
+const COMPANY_LINKS = [
+    { href: '#why-us', label: 'How we work' },
+    { href: '#testimonials', label: 'Client feedback' },
+    { href: '#contact', label: 'Contact us' },
+];
+export function Footer() {
+    const year = new Date().getFullYear();
+    return (_jsx("footer", { className: "border-t border-white/10 bg-navy-950 text-navy-200", children: _jsxs("div", { className: "container py-14", children: [_jsxs("div", { className: "grid gap-10 lg:grid-cols-4", children: [_jsxs("div", { className: "lg:col-span-2", children: [_jsxs("div", { className: "flex items-center gap-2.5", children: [_jsx("span", { className: "flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-electric-400 to-electric-600 text-sm font-bold text-white", children: "A" }), _jsxs("span", { className: "flex flex-col leading-none", children: [_jsx("span", { className: "text-base font-bold tracking-tight text-white", children: "Ausstech" }), _jsx("span", { className: "text-[11px] font-medium uppercase tracking-wider text-navy-400", children: "Consulting" })] })] }), _jsx("p", { className: "mt-5 max-w-md text-sm leading-relaxed", children: "IT consulting, cybersecurity, ERP support and NBN fault resolution for Australian small and medium businesses." }), _jsxs("div", { className: "mt-6 flex items-center gap-2 text-sm", children: [_jsx(ShieldCheck, { className: "h-4 w-4 shrink-0 text-electric-400", "aria-hidden": "true" }), _jsx("span", { children: siteConfig.serviceArea.join(' · ') })] })] }), _jsxs("div", { children: [_jsx("h3", { className: "text-sm font-semibold uppercase tracking-wider text-white", children: "Services" }), _jsx("ul", { className: "mt-5 space-y-3", children: SERVICE_LINKS.map((link) => (_jsx("li", { children: _jsx("a", { href: link.href, className: "text-sm transition-colors hover:text-electric-300", children: link.label }) }, link.label))) })] }), _jsxs("div", { children: [_jsx("h3", { className: "text-sm font-semibold uppercase tracking-wider text-white", children: "Company" }), _jsx("ul", { className: "mt-5 space-y-3", children: COMPANY_LINKS.map((link) => (_jsx("li", { children: _jsx("a", { href: link.href, className: "text-sm transition-colors hover:text-electric-300", children: link.label }) }, link.label))) }), _jsx("h3", { className: "mt-8 text-sm font-semibold uppercase tracking-wider text-white", children: "Contact" }), _jsxs("ul", { className: "mt-5 space-y-3 text-sm", children: [_jsx("li", { children: _jsxs("a", { href: `mailto:${siteConfig.email}`, className: "flex items-center gap-2 transition-colors hover:text-electric-300", children: [_jsx(Mail, { className: "h-4 w-4 shrink-0", "aria-hidden": "true" }), siteConfig.email] }) }), siteConfig.phoneDisplay && (_jsx("li", { children: _jsxs("a", { href: `tel:${siteConfig.phone}`, className: "flex items-center gap-2 transition-colors hover:text-electric-300", children: [_jsx(Phone, { className: "h-4 w-4 shrink-0", "aria-hidden": "true" }), siteConfig.phoneDisplay] }) })), _jsxs("li", { className: "flex items-center gap-2", children: [_jsx(MapPin, { className: "h-4 w-4 shrink-0", "aria-hidden": "true" }), siteConfig.addressSuburb, ", ", siteConfig.addressState] })] })] })] }), _jsxs("div", { className: "mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between", children: [_jsxs("p", { children: ["\u00A9 ", year, " ", siteConfig.legalName, ". All rights reserved."] }), _jsxs("p", { className: "text-navy-400", children: [siteConfig.abn, " \u00A0\u00B7\u00A0 ", siteConfig.addressState, ", Australia"] })] })] }) }));
+}
