@@ -36,8 +36,8 @@ export function CtaBand() {
           </h2>
 
           <p className="body-lg mt-5 text-balance text-navy-200">
-            A short conversation is usually enough to scope the work and give
-            you a fixed price. No obligation, and no sales script.
+            A short phone call is usually enough to identify the issue and provide a fixed-price solution. No obligation, no sales pressure. 
+            We'll beat any genuine written quote from a competitor.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
