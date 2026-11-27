@@ -8,7 +8,7 @@ const SERVICE_LINKS = [
   { href: '#services', label: 'ERP & Application Support' },
   { href: '#services', label: 'NBN Services' },
   { href: '#services', label: 'Website Development' },
-  { href: '#services', label: 'Business Support' },
+  { href: '/admin-support', label: 'Admin & Business Support' },
 ];
 
 const COMPANY_LINKS = [
@@ -19,6 +19,8 @@ const COMPANY_LINKS = [
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const homeLink = (href: string) =>
+    href.startsWith('#') && window.location.pathname !== '/' ? `/${href}` : href;
 
   return (
     <footer className="border-t border-white/10 bg-navy-950 text-navy-200">
@@ -45,6 +47,10 @@ export function Footer() {
               for Australian small and medium businesses.
             </p>
 
+            <p className="mt-4 text-sm font-semibold text-electric-300">
+              {siteConfig.quoteGuarantee}
+            </p>
+
             <div className="mt-6 flex items-center gap-2 text-sm">
               <ShieldCheck
                 className="h-4 w-4 shrink-0 text-electric-400"
@@ -63,7 +69,7 @@ export function Footer() {
               {SERVICE_LINKS.map((link) => (
                 <li key={link.label}>
                   <a
-                    href={link.href}
+                    href={homeLink(link.href)}
                     className="text-sm transition-colors hover:text-electric-300"
                   >
                     {link.label}
@@ -82,7 +88,7 @@ export function Footer() {
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>
                   <a
-                    href={link.href}
+                    href={homeLink(link.href)}
                     className="text-sm transition-colors hover:text-electric-300"
                   >
                     {link.label}

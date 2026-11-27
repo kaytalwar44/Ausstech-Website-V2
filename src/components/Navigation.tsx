@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: '#why-us', label: 'Why Ausstech' },
   { href: '#testimonials', label: 'Clients' },
   { href: '#contact', label: 'Contact' },
+  { href: '/admin-support', label: 'Admin Support' },
 ];
 
 export function Navigation() {
@@ -34,6 +35,14 @@ export function Navigation() {
 
   function go(href: string) {
     setOpen(false);
+    if (!href.startsWith('#')) {
+      window.location.assign(href);
+      return;
+    }
+    if (window.location.pathname !== '/') {
+      window.location.assign(`/${href}`);
+      return;
+    }
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   }
 
@@ -48,8 +57,9 @@ export function Navigation() {
         <div className="flex h-16 items-center justify-between lg:h-20">
           {/* Wordmark */}
           <a
-            href="#main"
+            href="/#main"
             onClick={(e) => {
+              if (window.location.pathname !== '/') return;
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
@@ -82,7 +92,7 @@ export function Navigation() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 xl:flex">
             {siteConfig.phoneDisplay && (
               <a
                 href={`tel:${siteConfig.phone}`}
@@ -98,6 +108,14 @@ export function Navigation() {
           </div>
 
           {/* Mobile toggle */}
+          <a
+            href={`tel:${siteConfig.phone}`}
+            className="ml-auto mr-2 inline-flex items-center gap-1.5 text-sm font-semibold text-white lg:hidden"
+            aria-label={`Call ${siteConfig.phoneDisplay}`}
+          >
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            <span className="hidden min-[380px]:inline">{siteConfig.phoneDisplay}</span>
+          </a>
           <button
             onClick={() => setOpen((v) => !v)}
             className="flex h-10 w-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
@@ -106,6 +124,16 @@ export function Navigation() {
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10 bg-navy-950 text-electric-300">
+        <div className="container flex flex-wrap items-center justify-center gap-x-4 gap-y-1 py-2 text-center text-xs font-semibold sm:text-sm">
+          <span>{siteConfig.quoteGuarantee}</span>
+          <a href={`tel:${siteConfig.phone}`} className="inline-flex items-center gap-1.5 text-white hover:underline">
+            <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+            {siteConfig.phoneDisplay}
+          </a>
         </div>
       </div>
 
