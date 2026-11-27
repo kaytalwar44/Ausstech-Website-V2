@@ -8,7 +8,7 @@ const SERVICE_LINKS = [
   { href: '#services', label: 'ERP & Application Support' },
   { href: '#services', label: 'NBN Services' },
   { href: '#services', label: 'Website Development' },
-  { href: '/admin-support', label: 'Admin & Business Support' },
+  { href: '/admin-support/', label: 'Admin & Business Support' },
 ];
 
 const COMPANY_LINKS = [
