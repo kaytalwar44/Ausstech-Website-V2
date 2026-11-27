@@ -39,7 +39,7 @@ export function Navigation() {
       window.location.assign(href);
       return;
     }
-    if (window.location.pathname !== '/') {
+    if (window.location.pathname !== '/' && !document.querySelector(href)) {
       window.location.assign(`/${href}`);
       return;
     }
