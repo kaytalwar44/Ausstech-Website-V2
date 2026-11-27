@@ -18,13 +18,13 @@ export default function App() {
       <Helmet>
         <title>
           {isAdminSupport
-            ? 'Admin & Business Support | Ausstech Consulting Services'
+            ? 'Administrative & Offshore Support Services | Auss-Tech'
             : 'IT Support, Cybersecurity & NBN Services | Ausstech Consulting Services'}
         </title>
         <meta
           name="description"
           content={isAdminSupport
-            ? 'Practical administration, documentation and business support for Australian small and medium businesses. Call 0416 236 105 for a fixed-price quote.'
+            ? 'Scale your business with administrative, customer service and technical support resources, managed through Auss-Tech. Call 0416 236 105.'
             : 'Ausstech Consulting Services provides IT consulting, cybersecurity, ERP support and NBN fault resolution for Australian small and medium businesses.'}
         />
         <link rel="canonical" href={`${siteConfig.url}${isAdminSupport ? '/admin-support' : '/'}`} />
@@ -86,7 +86,7 @@ export default function App() {
             <Testimonials />
           </>
         )}
-        <CtaBand />
+        {!isAdminSupport && <CtaBand />}
       </main>
 
       <Footer />

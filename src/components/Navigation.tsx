@@ -35,11 +35,12 @@ export function Navigation() {
 
   function go(href: string) {
     setOpen(false);
+    document.body.style.overflow = '';
     if (!href.startsWith('#')) {
       window.location.assign(href);
       return;
     }
-    if (window.location.pathname !== '/') {
+    if (window.location.pathname !== '/' && !document.querySelector(href)) {
       window.location.assign(`/${href}`);
       return;
     }
