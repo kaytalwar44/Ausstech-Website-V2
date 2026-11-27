@@ -31,12 +31,14 @@ export function CtaBand() {
           <span className="eyebrow">Get in touch</span>
 
           <h2 className="heading-lg text-balance text-white">
-            Tell us what is going wrong. We will tell you what it takes to fix
-            it.
+            Tell us what's not working. We'll tell you exactly how to fix it.
           </h2>
 
           <p className="body-lg mt-5 text-balance text-navy-200">
-            A short phone call is usually enough to identify the issue and provide a fixed-price solution. No obligation, no sales pressure. 
+            A short phone call is usually enough to identify the issue and provide a fixed-price solution. No obligation, no sales pressure.
+          </p>
+
+          <p className="body-lg mt-4 text-balance text-navy-200">
             We'll beat any genuine written quote from a competitor.
           </p>
 
@@ -78,6 +80,18 @@ export function CtaBand() {
           </h3>
 
           <dl className="mt-6 space-y-5">
+            <div className="flex gap-4">
+              <dt className="shrink-0">
+                <Phone className="h-5 w-5 text-electric-400" aria-hidden="true" />
+                <span className="sr-only">Phone</span>
+              </dt>
+              <dd>
+                <a href={`tel:${siteConfig.phone}`} className="font-medium text-white hover:text-electric-300">
+                  {siteConfig.phoneDisplay}
+                </a>
+              </dd>
+            </div>
+
             <div className="flex gap-4">
               <dt className="shrink-0">
                 <Mail className="h-5 w-5 text-electric-400" aria-hidden="true" />

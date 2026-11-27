@@ -8,19 +8,26 @@ import { Testimonials } from '@/components/Testimonials';
 import { CtaBand } from '@/components/CtaBand';
 import { Footer } from '@/components/Footer';
 import { siteConfig } from '@/config/site';
+import AdminSupport from '@/pages/AdminSupport';
 
 export default function App() {
+  const isAdminSupport = /^\/admin-support\/?$/.test(window.location.pathname);
+
   return (
     <>
       <Helmet>
         <title>
-          IT Support, Cybersecurity &amp; NBN Services | Ausstech Consulting Services
+          {isAdminSupport
+            ? 'Admin & Business Support | Ausstech Consulting Services'
+            : 'IT Support, Cybersecurity & NBN Services | Ausstech Consulting Services'}
         </title>
         <meta
           name="description"
-          content="Ausstech Consulting Services provides IT consulting, cybersecurity, ERP support and NBN fault resolution for Australian small and medium businesses."
+          content={isAdminSupport
+            ? 'Practical administration, documentation and business support for Australian small and medium businesses. Call 0416 236 105 for a fixed-price quote.'
+            : 'Ausstech Consulting Services provides IT consulting, cybersecurity, ERP support and NBN fault resolution for Australian small and medium businesses.'}
         />
-        <link rel="canonical" href={siteConfig.url} />
+        <link rel="canonical" href={`${siteConfig.url}${isAdminSupport ? '/admin-support' : '/'}`} />
 
         {/*
           Structured data. This is what produces the business panel in Google
@@ -70,11 +77,15 @@ export default function App() {
       <Navigation />
 
       <main id="main">
-        <Hero />
-        <TrustBar />
-        <Services />
-        <WhyUs />
-        <Testimonials />
+        {isAdminSupport ? <AdminSupport /> : (
+          <>
+            <Hero />
+            <TrustBar />
+            <Services />
+            <WhyUs />
+            <Testimonials />
+          </>
+        )}
         <CtaBand />
       </main>
 

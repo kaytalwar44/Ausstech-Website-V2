@@ -17,6 +17,10 @@ export default defineConfig({
     target: 'es2022',
     outDir: 'dist',
     rollupOptions: {
+      input: {
+        home: path.resolve(__dirname, 'index.html'),
+        adminSupport: path.resolve(__dirname, 'admin-support/index.html'),
+      },
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],

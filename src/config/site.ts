@@ -13,11 +13,10 @@ export const siteConfig = {
   // TODO: confirm — used in the footer and the contact section.
   abn: 'ABN to be confirmed',
 
-  // TODO: confirm — a phone number converts far better than a form for local
-  // IT support. Leave as an empty string to hide the button entirely.
+  // Unformatted number for click-to-call links.
   phone: '0416236105',
-  // Display form, e.g. '(02) 9000 0000'
-  phoneDisplay: '0416236105',
+  phoneDisplay: '0416 236 105',
+  quoteGuarantee: 'Beat Any Written Quote Guarantee',
 
   email: 'info@auss-tech.com.au',
 

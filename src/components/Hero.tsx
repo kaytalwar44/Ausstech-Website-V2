@@ -11,7 +11,7 @@ const rise = {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-navy-950 pt-32 pb-24 lg:pt-40 lg:pb-32">
+    <section className="relative overflow-hidden bg-navy-950 pt-44 pb-24 lg:pt-48 lg:pb-32">
       {/* Layered background: gradient wash, grid, and two soft light blooms.
           All decorative, all pointer-events-none. */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
