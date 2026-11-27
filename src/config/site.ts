@@ -15,9 +15,9 @@ export const siteConfig = {
 
   // TODO: confirm — a phone number converts far better than a form for local
   // IT support. Leave as an empty string to hide the button entirely.
-  phone: '',
+  phone: '0416236105',
   // Display form, e.g. '(02) 9000 0000'
-  phoneDisplay: '',
+  phoneDisplay: '0416236105',
 
   email: 'info@auss-tech.com.au',
 
