@@ -40,6 +40,7 @@ jobs:
           path: ./dist
 
   deploy:
+    if: ${{ false }}
     environment:
       name: github-pages
 
