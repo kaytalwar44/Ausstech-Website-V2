@@ -31,6 +31,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Technical SEO regression tests
+        run: python3 scripts/test_technical_seo.py
+
+      - name: Validate built technical SEO assets
+        run: python3 scripts/validate_technical_seo.py --root dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -40,6 +46,7 @@ jobs:
           path: ./dist
 
   deploy:
+    if: ${{ false }}
     environment:
       name: github-pages
 
