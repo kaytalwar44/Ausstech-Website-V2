@@ -35,6 +35,7 @@ export function Navigation() {
 
   function go(href: string) {
     setOpen(false);
+    document.body.style.overflow = '';
     if (!href.startsWith('#')) {
       window.location.assign(href);
       return;
