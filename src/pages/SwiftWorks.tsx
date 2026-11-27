@@ -18,12 +18,12 @@ export default function SwiftWorks() {
           </p>
 
           <div className="mt-8 flex gap-4">
-            <a mo
+            <a href="#demo">
               Request Demo
               <ArrowRight size={18} />
             </a>
 
-            /contact
+            <a href="/contact">
               Contact Us
             </a>
           </div>
@@ -193,7 +193,7 @@ export default function SwiftWorks() {
             improve visibility and help your business grow.
           </p>
 
-          /contact
+          <a href="/contact">
             Request Demo
             <ArrowRight size={18} />
           </a>
