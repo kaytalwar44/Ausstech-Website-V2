@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: '#why-us', label: 'Why Ausstech' },
   { href: '#testimonials', label: 'Clients' },
   { href: '#contact', label: 'Contact' },
-  { href: '/admin-support', label: 'Admin Support' },
+  { href: '/admin-support/', label: 'Admin Support' },
 ];
 
 export function Navigation() {
