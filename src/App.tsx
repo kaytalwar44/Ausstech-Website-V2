@@ -7,9 +7,11 @@ import { Testimonials } from '@/components/Testimonials';
 import { CtaBand } from '@/components/CtaBand';
 import { Footer } from '@/components/Footer';
 import AdminSupport from '@/pages/AdminSupport';
+import ITSupportSydney from '@/pages/ITSupportSydney';
 
 export default function App() {
   const isAdminSupport = /^\/admin-support\/?$/.test(window.location.pathname);
+  const isITSupportSydney = /^\/it-support-sydney\/?$/.test(window.location.pathname);
 
   return (
     <>
@@ -23,7 +25,7 @@ export default function App() {
       <Navigation />
 
       <main id="main">
-        {isAdminSupport ? <AdminSupport /> : (
+        {isITSupportSydney ? <ITSupportSydney /> : isAdminSupport ? <AdminSupport /> : (
           <>
             <Hero />
             <TrustBar />
@@ -32,7 +34,7 @@ export default function App() {
             <Testimonials />
           </>
         )}
-        {!isAdminSupport && <CtaBand />}
+        {!isAdminSupport && !isITSupportSydney && <CtaBand />}
       </main>
 
       <Footer />

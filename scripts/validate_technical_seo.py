@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the two public marketing pages without external dependencies."""
+"""Validate the public marketing pages without external dependencies."""
 
 import argparse
 import json
@@ -17,6 +17,7 @@ ORIGIN = "https://www.auss-tech.com.au"
 PAGES = {
     "index.html": ORIGIN + "/",
     "admin-support/index.html": ORIGIN + "/admin-support/",
+    "it-support-sydney/index.html": ORIGIN + "/it-support-sydney/",
 }
 IMAGE = ORIGIN + "/images/social-card.png"
 
@@ -91,11 +92,20 @@ def validate_schema(head, canonical):
     assert schema["@context"] == "https://schema.org"
     graph = schema["@graph"]
     assert isinstance(graph, list)
-    by_type = {node["@type"]: node for node in graph}
+    by_type = {}
+    for node in graph:
+        types = node["@type"] if isinstance(node["@type"], list) else [node["@type"]]
+        for kind in types:
+            assert kind not in by_type, f"Duplicate schema type: {kind}"
+            by_type[kind] = node
+    is_sydney = canonical == ORIGIN + "/it-support-sydney/"
     expected = {"Organization", "WebSite", "WebPage"}
     if canonical != ORIGIN + "/":
         expected.add("Service")
-    assert set(by_type) == expected and len(graph) == len(expected)
+    if is_sydney:
+        expected.update({"LocalBusiness", "BreadcrumbList"})
+    assert set(by_type) == expected
+    assert len(graph) == len(expected) - int(is_sydney)
     ids = {node["@id"] for node in graph}
     assert len(ids) == len(graph), "Duplicate schema IDs"
     for node_id in ids:
@@ -129,10 +139,54 @@ def validate_schema(head, canonical):
         assert service["url"] == canonical
         assert service["provider"]["@id"] == org["@id"]
         assert page["about"]["@id"] == service["@id"]
+    if is_sydney:
+        assert by_type["LocalBusiness"] is org
+        assert org["areaServed"] == {"@type": "City", "name": "Sydney"}
+        assert org["image"] == IMAGE
+        assert service["areaServed"] == org["areaServed"]
+        breadcrumb = by_type["BreadcrumbList"]
+        assert page["breadcrumb"]["@id"] == breadcrumb["@id"]
+        assert breadcrumb["itemListElement"] == [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": ORIGIN + "/"},
+            {"@type": "ListItem", "position": 2, "name": "IT Support Sydney", "item": canonical},
+        ]
     serialized = json.dumps(schema)
     for placeholder in ["TODO", "ABN to be confirmed", "aggregateRating", "streetAddress"]:
         assert placeholder not in serialized, f"Unsupported/placeholder schema: {placeholder}"
-    return org, by_type["WebSite"]
+    identity_keys = ["@id", "name", "alternateName", "url", "telephone", "email"]
+    return {key: org[key] for key in identity_keys}, by_type["WebSite"]
+
+
+def validate_sydney_content(content_path, head):
+    content = json.loads(content_path.read_text())
+    assert content["path"] == "/it-support-sydney/"
+    assert content["title"] == head.titles[0].strip()
+    assert content["description"] == head.single("description")
+    assert content["title"].startswith("IT Support Sydney")
+    assert content["h1"].startswith("IT Support Sydney")
+    assert content["whyHeading"] == "Why Choose Auss-Tech"
+    assert content["guaranteeHeading"] == "Beat Any Written Quote Guarantee"
+    assert len(content["faqs"]) >= 6, "At least six FAQs required"
+    questions = [faq["question"] for faq in content["faqs"]]
+    assert len(set(questions)) == len(questions), "FAQ questions must be unique"
+    assert all(faq["answer"].strip() for faq in content["faqs"])
+    assert {"/", "/admin-support/"}.issubset(
+        {link["href"] for link in content["relatedLinks"]}
+    ), "Homepage and admin-support internal links are required"
+    text = json.dumps(content).lower()
+    for keyword in [
+        "business it support sydney",
+        "managed it services sydney",
+        "microsoft 365 support sydney",
+        "cyber security sydney",
+        "australian-based support",
+    ]:
+        assert keyword in text, f"Missing requested topic: {keyword}"
+    assert re.search(r"it support company (?:in )?sydney", text)
+    assert "sydney metro" in text
+    assert "24/7" not in text and "microsoft partner" not in text, "Do not invent service credentials or SLAs"
+    print(f"PASS Sydney content: metadata match, H1, requested topics, {len(questions)} FAQs and internal links")
+    return content
 
 
 def validate(root, source=False):
@@ -150,10 +204,10 @@ def validate(root, source=False):
     ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     assert sitemap.getroot().tag == "{" + ns["s"] + "}urlset"
     urls = [node.text for node in sitemap.findall("s:url/s:loc", ns)]
-    assert len(urls) == len(set(urls)) == 2
+    assert len(urls) == len(set(urls)) == len(PAGES)
     assert set(urls) == set(PAGES.values()), "Sitemap must list only canonical marketing pages"
     validate_png(public / "images/social-card.png")
-    print("PASS robots rules, two-URL XML sitemap and 1200x630 PNG")
+    print(f"PASS robots rules, {len(PAGES)}-URL XML sitemap and 1200x630 PNG")
     identities = []
     for filename, canonical in PAGES.items():
         text = (root / filename).read_text()
@@ -190,10 +244,24 @@ def validate(root, source=False):
             assert not parsed.netloc, "Runtime assets must be same-origin"
             assert (root / parsed.path.lstrip("/")).is_file(), f"Missing runtime asset: {asset}"
         identities.append(validate_schema(head, canonical))
+        if filename == "it-support-sydney/index.html":
+            content_root = root if source else Path(__file__).resolve().parents[1]
+            sydney = validate_sydney_content(content_root / "src/content/it-support-sydney.json", head)
+            if not source:
+                bundled_js = "\n".join(
+                    (root / urlparse(asset).path.lstrip("/")).read_text()
+                    for asset in head.assets if urlparse(asset).path.endswith(".js")
+                )
+                for expected_copy in [sydney["h1"], sydney["faqs"][0]["question"], sydney["faqs"][-1]["question"]]:
+                    assert expected_copy in bundled_js, "Sydney content missing from generated JS; check stale compiled output"
+                print("PASS generated JS includes the Sydney H1 and FAQ content")
         print(f"PASS {filename}: canonical, unique metadata, OG/X tags, JSON-LD graph and assets")
-    assert identities[0] == identities[1], "Organization/website identity must match across pages"
+    assert all(identity == identities[0] for identity in identities), (
+        "Organization/website identity must match across pages"
+    )
     print("PASS consistent organization identity; no placeholder verification tags or local-business address")
     print("Scope: local structural validation, not Google/Bing ownership or rich-result certification.")
+    print("NOTE LocalBusiness: no confirmed physical address supplied; Google local-business rich-result eligibility is not claimed.")
 
 
 if __name__ == "__main__":

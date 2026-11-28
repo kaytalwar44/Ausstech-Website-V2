@@ -1,0 +1,133 @@
+{
+  "path": "/it-support-sydney/",
+  "title": "IT Support Sydney | Business IT Support | Auss-Tech",
+  "description": "IT Support Sydney for businesses. Australian-based Microsoft 365, managed IT and cyber security support. Call 0416 236 105 for a fixed-price quote.",
+  "eyebrow": "Australian-Based Support for Sydney Businesses",
+  "h1": "IT Support Sydney Businesses Can Rely On",
+  "intro": "Keep your team connected, your systems working and your business information protected. Auss-Tech provides practical IT support for Sydney businesses, from everyday technical faults to Microsoft 365 administration and cyber security improvements.",
+  "introDetail": "Speak with an Australian-based support contact, get a clear explanation of the problem and agree the scope before work begins. No confusing jargon, no obligation and no sales pressure.",
+  "servicesHeading": "Business IT Support Sydney",
+  "servicesIntro": "A disconnected laptop, a mailbox that will not sync or an unreliable office network can interrupt the whole team. We help small and medium businesses investigate the cause, prioritise the work and put a practical fix in place.",
+  "services": [
+    {
+      "title": "Everyday business IT support",
+      "description": "Get help with laptop and desktop issues, email problems, printers, software faults and connectivity. We focus on understanding what has stopped working and explaining the agreed fix in plain English."
+    },
+    {
+      "title": "Microsoft 365 Support Sydney",
+      "description": "Practical help with Outlook and Exchange Online, Teams, OneDrive and SharePoint. We can assist with account administration, mailbox access, permissions, licensing questions and multi-factor authentication, so your people can collaborate with appropriate access."
+    },
+    {
+      "title": "Managed IT Services Sydney",
+      "description": "Build an ongoing support plan around the systems your business depends on. Discuss routine maintenance, update management, access reviews and documentation, with the scope, support arrangements and pricing agreed before work begins."
+    },
+    {
+      "title": "Cyber Security Sydney",
+      "description": "Reduce avoidable risks with practical security reviews, multi-factor authentication, endpoint and email protection, access controls and incident response planning. We explain the priorities so you can make informed decisions about protecting your business."
+    },
+    {
+      "title": "Office networks and NBN troubleshooting",
+      "description": "Investigate unreliable Wi-Fi, router issues and office connectivity. We help identify likely causes and the information needed to escalate NBN faults with your provider, rather than leaving you to repeat the same troubleshooting steps."
+    },
+    {
+      "title": "New starters and growing teams",
+      "description": "Plan device setup, user accounts, Microsoft 365 access and shared information as your team changes. Clear access arrangements and documentation make it easier to support staff working in the office or remotely."
+    }
+  ],
+  "localHeading": "Local Sydney support, without the technical runaround",
+  "localParagraphs": [
+    "Sydney businesses do not all work from one office. A team in the CBD may share documents with colleagues in Parramatta, North Sydney or working from home. Your IT support needs to account for the way your people actually work, not just the device in front of them.",
+    "Auss-Tech supports Sydney Metro businesses with practical advice for office, remote and hybrid environments. Tell us where your team is based, which systems you use and what is getting in the way. We will confirm the available support options and agree the next steps before quoting."
+  ],
+  "whyHeading": "Why Choose Auss-Tech",
+  "reasons": [
+    {
+      "title": "Australian-Based Support",
+      "description": "Speak with an Australian-based IT support contact who understands local business needs. Get clear ownership of your request and straightforward communication."
+    },
+    {
+      "title": "Microsoft 365 expertise",
+      "description": "Get practical help with everyday Microsoft 365 administration and collaboration tools, with user access and security considered together."
+    },
+    {
+      "title": "Clear scope before work begins",
+      "description": "We explain the proposed work and provide a fixed-price quote for the agreed scope, so you can decide before committing."
+    },
+    {
+      "title": "A clear point of contact",
+      "description": "From the initial investigation to the agreed work, you know who to contact for updates and questions about your business IT."
+    }
+  ],
+  "processHeading": "How to get IT support",
+  "steps": [
+    {
+      "title": "Tell us what is not working",
+      "description": "Call or email with the symptoms, the systems involved and how the issue is affecting your team."
+    },
+    {
+      "title": "Agree the scope and quote",
+      "description": "We discuss the likely next steps, confirm the work to be done and provide a fixed-price quote for that scope."
+    },
+    {
+      "title": "Get the agreed work completed",
+      "description": "We carry out the agreed work, explain the outcome and discuss any sensible follow-up actions."
+    }
+  ],
+  "guaranteeHeading": "Beat Any Written Quote Guarantee",
+  "guaranteeText": "We'll beat any genuine written quote from a competitor. Call or email Auss-Tech to discuss the work you need and share your quote.",
+  "relatedHeading": "IT support and business support, with a clear distinction",
+  "relatedIntro": "Need more than technical troubleshooting? Explore our other services and discuss the support that fits your business.",
+  "relatedLinks": [
+    {
+      "href": "/",
+      "label": "Explore all Auss-Tech services",
+      "description": "See our IT consulting, cybersecurity, ERP support, NBN services and broader business support."
+    },
+    {
+      "href": "/admin-support/",
+      "label": "Administrative and offshore support services",
+      "description": "Explore Australian-managed administrative, customer service and back-office resources for your team."
+    }
+  ],
+  "faqHeading": "IT Support Sydney FAQs",
+  "faqs": [
+    {
+      "question": "What business IT support do you provide in Sydney?",
+      "answer": "We help with everyday device and software problems, email, Microsoft 365 administration, office connectivity and practical cyber security improvements. Tell us about your systems and the issue so we can confirm the support scope."
+    },
+    {
+      "question": "Do you offer Australian-based support?",
+      "answer": "Yes. Auss-Tech provides Australian-based IT support, with a local point of contact and plain-English updates about the work being carried out."
+    },
+    {
+      "question": "Can you help with Microsoft 365 problems?",
+      "answer": "Yes. We can assist with Outlook and Exchange Online, Teams, OneDrive, SharePoint, account access, permissions, licensing questions and multi-factor authentication. We agree the required administration or troubleshooting work with you before starting."
+    },
+    {
+      "question": "Do you offer managed IT services in Sydney?",
+      "answer": "Yes. We can discuss ongoing support, maintenance and security reviews based on your systems and priorities. The scope, support arrangements and pricing are agreed before work begins."
+    },
+    {
+      "question": "What cyber security support is available?",
+      "answer": "We can help review security settings, introduce multi-factor authentication, improve endpoint and email protection, review access controls and plan for incidents. Security measures reduce risk; no provider can guarantee that every attack will be prevented."
+    },
+    {
+      "question": "How much does IT support cost?",
+      "answer": "The cost depends on the systems involved and the work required. A short call helps us understand the issue and provide a fixed-price quote for the agreed scope. There is no obligation to proceed."
+    },
+    {
+      "question": "Can you support remote and hybrid teams?",
+      "answer": "Yes. We can discuss support for staff working across Sydney offices and remotely, including Microsoft 365 collaboration, account access and connectivity. We confirm the available support options for your setup before quoting."
+    },
+    {
+      "question": "How does the written quote guarantee work?",
+      "answer": "We'll beat any genuine written quote from a competitor. Share the written quote when you contact Auss-Tech so we can discuss the work you need."
+    },
+    {
+      "question": "How do I choose an IT support company in Sydney?",
+      "answer": "Look for clear scope, understandable pricing, a named contact and an approach that considers security as well as day-to-day faults. Ask how your Microsoft 365 environment, devices and backups will be supported before agreeing to ongoing services."
+    }
+  ],
+  "contactHeading": "Need IT support for your Sydney business?",
+  "contactText": "A short phone call helps us understand the issue and discuss the next steps. No obligation, no sales pressure."
+}
