@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
 const SERVICE_LINKS = [
+  { href: '/it-support-sydney/', label: 'IT Support Sydney' },
   { href: '#services', label: 'Cybersecurity' },
   { href: '#services', label: 'IT Consulting' },
   { href: '#services', label: 'ERP & Application Support' },

@@ -20,6 +20,7 @@ export default defineConfig({
       input: {
         home: path.resolve(__dirname, 'index.html'),
         adminSupport: path.resolve(__dirname, 'admin-support/index.html'),
+        itSupportSydney: path.resolve(__dirname, 'it-support-sydney/index.html'),
       },
       output: {
         manualChunks: {
